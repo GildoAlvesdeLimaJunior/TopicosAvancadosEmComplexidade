@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include <csignal>
 
 using namespace std;
 
@@ -78,6 +77,33 @@ int main() {
     }
 
     case 8: {
+        vector<bool> twosum(4005, false);
+
+        for (int i = 0; i < a.size(); i++) {
+            for (int j = 0; j < a.size(); j++) {
+                twosum[a[i] + a[j] + 2000] = true;
+            }
+        }
+
+        vector<bool> foursum(8005, false);
+
+        for (int i = 0; i < twosum.size(); i++) {
+            for (int j = 0; j < twosum.size(); j++) {
+                if (twosum[i] == true && twosum[j] == true) {
+                    int soma = (i - 2000) + (j - 2000);
+                    foursum[soma + 4000] = true;
+                    int complemento = -soma;
+
+                    if (foursum[complemento + 4000]) {
+                        cout << "Sim\n";
+                        return 0;
+                    }
+                }
+            }
+        }
+
+        cout << "Nao\n";
+        return 0;
     }
     }
 }
