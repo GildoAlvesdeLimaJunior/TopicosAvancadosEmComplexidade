@@ -2,12 +2,12 @@
 
 ## Trabalho 1:
 
-### a.cpp: Feito e verificado
-### b.cpp: Feito e verificado
-### c.cpp: Feito, mas com poucos testes
-### d.cpp: Feito, mas com poucos testes
-### e.cpp: Não feito
-### f.cpp: Não feito
+### a.cpp: Feito, verificado e enviado
+### b.cpp: Feito, verificado e enviado
+### c.cpp: Feito, verificado e enviado
+### d.cpp: Feito, verificado e enviado
+### e.cpp: Feito, mas com poucas verificações
+### f.cpp: Tentando
 
 ## Trabalho 2:
 ## Trabalho 3:
