@@ -4,30 +4,30 @@
 using namespace std;
 
 int main() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
+    ios::sync_with_stdio(0);
+    cin.tie(0);
 
-  string r, s;
-  cin >> r >> s;
+    string r, s;
+    cin >> r >> s;
 
-  unordered_map<char, int> mp;
+    vector<int> mp(26, 0);
 
-  if (r.size() != s.size()) {
-    cout << "NAO\n";
-    return 0;
-  } else {
-    for (int i = 0; i < r.size(); i++) {
-      mp[r[i]]++;
-      mp[s[i]]--;
+    if (r.size() != s.size()) {
+        cout << "Nao\n";
+        return 0;
+    } else {
+        for (int i = 0; i < r.size(); i++) {
+            mp[r[i] - 'a']++;
+            mp[s[i] - 'a']--;
+        }
     }
-  }
 
-  for (auto x : mp) {
-    if (x.second != 0) {
-      cout << "NAO\n";
-      return 0;
+    for (auto x : mp) {
+        if (x != 0) {
+            cout << "Nao\n";
+            return 0;
+        }
     }
-  }
 
-  cout << "SIM\n";
+    cout << "Sim\n";
 }
