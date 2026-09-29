@@ -6,8 +6,8 @@
 ### b.cpp: Feito, verificado e enviado
 ### c.cpp: Feito, verificado e enviado
 ### d.cpp: Feito, verificado e enviado
-### e.cpp: Feito, mas com poucas verificações
-### f.cpp: Tentando
+### e.cpp: Feito, verificado e enviado
+### f.cpp: Feito, mas com poucas verificações
 
 ## Trabalho 2:
 ## Trabalho 3:
