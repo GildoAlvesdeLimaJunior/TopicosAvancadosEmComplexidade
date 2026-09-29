@@ -7,7 +7,7 @@
 ### c.cpp: Feito, verificado e enviado
 ### d.cpp: Feito, verificado e enviado
 ### e.cpp: Feito, verificado e enviado
-### f.cpp: Feito, mas com poucas verificações
+### f.cpp: Feito, verificado e enviado
 
 ## Trabalho 2:
 ## Trabalho 3:
