@@ -9,6 +9,8 @@
 ### e.cpp: Feito, verificado e enviado
 ### f.cpp: Feito, verificado e enviado
 
+### Nota: 10.00
+
 ## Trabalho 2:
 ## Trabalho 3:
 ## Trabalho 4:
