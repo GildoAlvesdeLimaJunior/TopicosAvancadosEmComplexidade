@@ -1,28 +1,39 @@
-# TopicosAvancadosEmComplexidade
+# Tópicos Avançados em Complexidade
 
-## Trabalho 1:
+Resoluções dos trabalhos práticos da disciplina de Thiago.
 
-### a.cpp: Feito, verificado e enviado
-### b.cpp: Feito, verificado e enviado
-### c.cpp: Feito, verificado e enviado
-### d.cpp: Feito, verificado e enviado
-### e.cpp: Feito, verificado e enviado
-### f.cpp: Feito, verificado e enviado
+## Trabalho 1
+**Nota:** `10.00`
 
-### Nota: 10.00
+- [x] `a.cpp` - Feito, verificado e enviado
+- [x] `b.cpp` - Feito, verificado e enviado
+- [x] `c.cpp` - Feito, verificado e enviado
+- [x] `d.cpp` - Feito, verificado e enviado
+- [x] `e.cpp` - Feito, verificado e enviado
+- [x] `f.cpp` - Feito, verificado e enviado
 
-## Trabalho 2:
+---
 
-### a.cpp: Feito, enviado, mas falta verificar
-### b.cpp: Feito, enviado, mas falta verificar
-### c.cpp: Feito, enviado, mas falta verificar
-### d.cpp: Feito, enviado, mas falta verificar
-### e.cpp: Feito, enviado, mas falta verificar
-### f.cpp: Fazendo ainda
+## Trabalho 2
+**Nota:** *Pendente*
 
-### Nota: 
+- [x] `a.cpp` - Feito e enviado *(falta verificar)*
+- [x] `b.cpp` - Feito e enviado *(falta verificar)*
+- [x] `c.cpp` - Feito e enviado *(falta verificar)*
+- [x] `d.cpp` - Feito e enviado *(falta verificar)*
+- [x] `e.cpp` - Feito e enviado *(falta verificar)*
+- [ ] `f.cpp` - Fazendo ainda
 
-## Trabalho 3:
-## Trabalho 4:
-## Trabalho 5:
-## Trabalho 6:
+---
+
+## Trabalho 3
+- *Aguardando início*
+
+## Trabalho 4
+- *Aguardando início*
+
+## Trabalho 5
+- *Aguardando início*
+
+## Trabalho 6
+- *Aguardando início*
