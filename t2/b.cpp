@@ -1,9 +1,9 @@
-#include <algorithm>
 #include <bits/stdc++.h>
+
 using namespace std;
 
 long long sum(vector<long long> &v) {
-    int sum = 0;
+    long long sum = 0;
     for (auto x : v) {
         sum += x;
     }
@@ -35,9 +35,12 @@ long long sum(vector<long long> &v) {
 //
 
 int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
     int n;
     cin >> n;
-    vector<long long> a(n, 0);
+    vector<long long> a(n);
 
     for (int i = 0; i < n; i++) {
         cin >> a[i];
@@ -48,7 +51,7 @@ int main() {
 
     int m;
     cin >> m;
-    vector<long long> b(n, 0);
+    vector<long long> b(m);
 
     for (int i = 0; i < m; i++) {
         cin >> b[i];
@@ -58,20 +61,24 @@ int main() {
     long long b_sum = sum(b);
 
     int i = 0, j = 0;
+    bool find = false;
 
-    while (true) {
-        pair<int, int> rsp = {i, j};
-
+    while (i < n && j < m) {
         auto ai = a[i];
         auto bj = b[j];
 
         if ((a_sum - ai + bj) == (b_sum - bj + ai)) {
-            cout << a[rsp.first] << ' ' << b[rsp.second] << '\n';
+            cout << ai << ' ' << bj << '\n';
+            find = true;
             break;
         } else if ((a_sum - ai + bj) <= (b_sum - bj + ai)) {
             j++;
         } else {
             i++;
         }
+    }
+
+    if (!find) {
+        cout << -1 << '\n';
     }
 }

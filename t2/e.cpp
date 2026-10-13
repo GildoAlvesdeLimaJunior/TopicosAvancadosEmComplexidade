@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include <cstdio>
+
 using namespace std;
 using ll = long long;
 
@@ -58,6 +58,9 @@ ll merge_sort(int l, int r, vector<ll> &a, vector<ll> &aux) {
 }
 
 int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
     int n;
     cin >> n;
     vector<ll> ind(n, 0);
@@ -67,6 +70,6 @@ int main() {
     vector<ll> aux(n, 0);
     int l = 0, r = n;
     ll rsp = merge_sort(l, r, ind, aux);
-    ll total = n * (n - 1) / 2;
-    cout << total - rsp;
+    ll total = (ll)n * (n - 1) / 2;
+    cout << total - rsp << '\n';
 }

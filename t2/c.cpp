@@ -1,7 +1,4 @@
-#include <algorithm>
 #include <bits/stdc++.h>
-#include <numeric>
-#include <pthread.h>
 using namespace std;
 using ll = long long;
 
@@ -44,14 +41,14 @@ ll sum(vector<ll> &w) {
 }
 
 ll max(vector<ll> &w) {
-    ll max = w[1];
+    ll maximo = w[0];
     auto sz = w.size();
-    for (int i = 0; i < sz; i++) {
-        if (w[i] > max) {
-            max = w[i];
+    for (auto x : w) {
+        if (maximo < x) {
+            maximo = x;
         }
     }
-    return max;
+    return maximo;
 }
 } // namespace ope
 
@@ -68,9 +65,8 @@ ll max(vector<ll> &w) {
 //     while cap <= m: fill the ship
 //  if there is left containers return false else return true
 
-bool solve(vector<ll> &w, int m, int k) {
-    int days = 1;
-    ll cap = 0;
+bool solve(vector<ll> &w, ll m, int k) {
+    ll days = 1, cap = 0;
 
     for (auto weight : w) {
         if (weight > m) {
@@ -106,11 +102,10 @@ int main() {
         cin >> w[i];
     }
 
-    int l = ope::max(w);
-    int r = ope::sum(w);
+    ll l = ope::max(w), r = ope::sum(w);
 
     while (l < r) {
-        int m = l + (r - l) / 2;
+        ll m = l + (r - l) / 2;
         if (solve(w, m, k)) {
             r = m;
         } else {

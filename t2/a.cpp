@@ -1,6 +1,4 @@
 #include <bits/stdc++.h>
-#include <cstdio>
-#include <iostream>
 using namespace std;
 
 // Um array eh k-bacana se existem k elementos de a maiores ou iguais a k.
@@ -62,13 +60,14 @@ int main() {
 
     while (l <= r) {
         int k = l + (r - l) / 2;
+        int res = eh_k_bacana(k, a) == 1;
 
-        if (eh_k_bacana(k, a) == 1) {
+        if (res) {
             asn = k;
             break;
         }
 
-        else if (eh_k_bacana(k, a) == 2) {
+        else if (res) {
             r = k - 1;
         }
 
