@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+struct Queue {
+    vector<int> data;
+    size_t head = 0;
+
+    void push(int x) {
+        data.push_back(x);
+    }
+
+    void pop() {
+        if (!empty())
+            head++;
+    }
+
+    int front() {
+        return data[head];
+    }
+
+    bool empty() {
+        return head == data.size();
+    }
+
+    size_t size() {
+        return data.size() - head;
+    }
+};
