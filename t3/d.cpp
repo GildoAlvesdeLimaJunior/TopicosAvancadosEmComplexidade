@@ -22,7 +22,7 @@ int h(int v1, int t) {
     for (int k = 1; k < 1e6; k *= 10) {
         int d1 = v1 % 10;
         int dt = t % 10;
-        acc += min(mod(dt - d1), mod((dt + 10) - d1));
+        acc += min(min(mod(dt - d1), mod((dt + 10) - d1)), mod((dt - 10) - d1));
 
         v1 /= 10;
         t /= 10;
