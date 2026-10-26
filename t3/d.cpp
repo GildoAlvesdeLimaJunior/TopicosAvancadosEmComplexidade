@@ -1,17 +1,13 @@
 #include <iostream>
+#include <queue>
 #include <vector>
 
 using namespace std;
 
-vector<int> adj[int(1e6) + 5];
-bool is_adj(int v1, int v2) {
-    for (auto v : adj[v1]) {
-        if (v == v2) {
-            return true;
-        }
-    }
-    return false;
-}
+vector<int> steps(1e6, 1e9 + 7);
+vector<bool> vis(1e6, false);
+
+vector<bool> proibidas(1e6);
 
 int mod(int x) {
     return x < 0 ? -x : x;
@@ -29,9 +25,59 @@ int h(int v1, int t) {
     }
     return acc;
 }
-vector<bool> proibidas(1e6);
+
+int a_star(int start, int t) {
+    if (proibidas[start] || proibidas[t])
+        return -1;
+    priority_queue<pair<int, int>> q;
+    steps[start] = 0;
+    int f = h(start, t);
+    q.push({-f, start});
+    while (!q.empty()) {
+        int curr = q.top().second;
+        q.pop();
+        if (curr == t)
+            return steps[curr];
+        if (vis[curr])
+            continue;
+        vis[curr] = true;
+        int temp = curr;
+        int u;
+        for (int k = 1; k < 1e6; k *= 10) {
+
+            int d = temp % 10;
+            if (d == 0) {
+                u = curr + 9 * k;
+
+            } else {
+                u = curr - k;
+            }
+            if (!vis[u] && !proibidas[u] && steps[curr] + 1 < steps[u]) {
+                steps[u] = steps[curr] + 1;
+                int f_u = steps[u] + h(u, t);
+                q.push({-f_u, u});
+            }
+            if (d == 9) {
+                u = curr - 9 * k;
+
+            } else {
+                u = curr + k;
+            }
+
+            temp /= 10;
+            if (!vis[u] && !proibidas[u] && steps[curr] + 1 < steps[u]) {
+                steps[u] = steps[curr] + 1;
+                int f_u = steps[u] + h(u, t);
+                q.push({-f_u, u});
+            }
+        }
+    }
+    return -1;
+}
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int n;
     cin >> n;
     int t;
@@ -43,41 +89,5 @@ int main() {
         proibidas[num] = true;
     }
 
-    for (int i = 0; i < 1e6; ++i) {
-        int temp = i;
-        for (int k = 1; k < 1e6; k *= 10) {
-            int d = temp % 10;
-            if (d == 0) {
-                if (!proibidas[i] && !proibidas[i + 9 * k]) {
-                    adj[i].push_back(i + 9 * k);
-                }
-
-            } else {
-                if (!proibidas[i] && !proibidas[i - k]) {
-                    adj[i].push_back(i - k);
-                }
-            }
-            if (d == 9) {
-                if (!proibidas[i] && !proibidas[i - 9 * k]) {
-                    adj[i].push_back(i - 9 * k);
-                }
-
-            } else {
-                if (!proibidas[i] && !proibidas[i + k]) {
-                    adj[i].push_back(i + k);
-                }
-            }
-
-            temp /= 10;
-        }
-    }
-
-    while (true) {
-        int v1, v2;
-        cin >> v1 >> v2;
-        for (auto v : adj[v1]) {
-            cout << v << endl;
-        }
-        cout << is_adj(v1, v2) << endl;
-    }
+    cout << a_star(0, t) << endl;
 }
