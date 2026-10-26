@@ -1,5 +1,4 @@
 #include <iostream>
-#include <queue>
 #include <vector>
 
 using namespace std;
@@ -8,7 +7,79 @@ vector<int> steps(1e6, 1e9 + 7);
 vector<bool> vis(1e6, false);
 
 vector<bool> proibidas(1e6);
+struct pairi {
+    int first;
+    int second;
+};
+struct PriorityQueue {
+    vector<pairi> data;
 
+    void arrangeUp(int i) {
+        while (i > 0) {
+            int pai = (i - 1) / 2;
+
+            if (data[i].first < data[pai].first) {
+                swap(data[i], data[pai]);
+                i = pai;
+            } else {
+                break;
+            }
+        }
+    }
+
+    void arrangeDown(int i) {
+        while (2 * i + 1 < data.size()) {
+            int left = 2 * i + 1;
+            int rigth = 2 * i + 2;
+            int less = left;
+
+            if (rigth < data.size() && data[rigth].first < data[left].first) {
+                less = rigth;
+            }
+
+            if (data[less].first < data[i].first) {
+                swap(data[i], data[less]);
+                i = less;
+            } else {
+                break;
+            }
+        }
+    }
+
+    void push(int idx, int valor) {
+        pairi temp;
+        temp.first = idx;
+        temp.second = valor;
+        data.push_back(temp);
+        arrangeUp(data.size() - 1);
+    }
+
+    void pop() {
+        if (data.size() == 0) {
+            cout << "Fila de Prioridade vazia";
+            return;
+        }
+
+        data[0] = data.back();
+        data.pop_back();
+
+        if (data.size() != 0) {
+            arrangeDown(0);
+        }
+    }
+
+    int size() {
+        return data.size();
+    }
+
+    pairi top() {
+        return data[0];
+    }
+
+    bool isEmpty() {
+        return data.empty();
+    };
+};
 int mod(int x) {
     return x < 0 ? -x : x;
 }
@@ -29,11 +100,11 @@ int h(int v1, int t) {
 int a_star(int start, int t) {
     if (proibidas[start] || proibidas[t])
         return -1;
-    priority_queue<pair<int, int>> q;
+    PriorityQueue q;
     steps[start] = 0;
     int f = h(start, t);
-    q.push({-f, start});
-    while (!q.empty()) {
+    q.push(-f, start);
+    while (!q.data.size()) {
         int curr = q.top().second;
         q.pop();
         if (curr == t)
@@ -55,7 +126,7 @@ int a_star(int start, int t) {
             if (!vis[u] && !proibidas[u] && steps[curr] + 1 < steps[u]) {
                 steps[u] = steps[curr] + 1;
                 int f_u = steps[u] + h(u, t);
-                q.push({-f_u, u});
+                q.push(-f_u, u);
             }
             if (d == 9) {
                 u = curr - 9 * k;
@@ -68,7 +139,7 @@ int a_star(int start, int t) {
             if (!vis[u] && !proibidas[u] && steps[curr] + 1 < steps[u]) {
                 steps[u] = steps[curr] + 1;
                 int f_u = steps[u] + h(u, t);
-                q.push({-f_u, u});
+                q.push(-f_u, u);
             }
         }
     }
