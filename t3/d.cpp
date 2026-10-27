@@ -103,8 +103,8 @@ int a_star(int start, int t) {
     PriorityQueue q;
     steps[start] = 0;
     int f = h(start, t);
-    q.push(-f, start);
-    while (!q.data.size()) {
+    q.push(f, start);
+    while (q.data.size()) {
         int curr = q.top().second;
         q.pop();
         if (curr == t)
@@ -126,7 +126,7 @@ int a_star(int start, int t) {
             if (!vis[u] && !proibidas[u] && steps[curr] + 1 < steps[u]) {
                 steps[u] = steps[curr] + 1;
                 int f_u = steps[u] + h(u, t);
-                q.push(-f_u, u);
+                q.push(f_u, u);
             }
             if (d == 9) {
                 u = curr - 9 * k;
@@ -139,7 +139,7 @@ int a_star(int start, int t) {
             if (!vis[u] && !proibidas[u] && steps[curr] + 1 < steps[u]) {
                 steps[u] = steps[curr] + 1;
                 int f_u = steps[u] + h(u, t);
-                q.push(-f_u, u);
+                q.push(f_u, u);
             }
         }
     }
