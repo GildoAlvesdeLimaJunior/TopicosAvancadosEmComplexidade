@@ -80,6 +80,7 @@ struct PriorityQueue {
         return data.empty();
     };
 };
+
 int mod(int x) {
     return x < 0 ? -x : x;
 }
@@ -100,26 +101,31 @@ int h(int v1, int t) {
 int a_star(int start, int t) {
     if (proibidas[start] || proibidas[t])
         return -1;
+
     PriorityQueue q;
     steps[start] = 0;
+
     int f = h(start, t);
     q.push(f, start);
+
     while (q.data.size()) {
         int curr = q.top().second;
         q.pop();
+
         if (curr == t)
             return steps[curr];
+
         if (vis[curr])
             continue;
+
         vis[curr] = true;
         int temp = curr;
+
         int u;
         for (int k = 1; k < 1e6; k *= 10) {
-
             int d = temp % 10;
             if (d == 0) {
                 u = curr + 9 * k;
-
             } else {
                 u = curr - k;
             }
@@ -128,9 +134,9 @@ int a_star(int start, int t) {
                 int f_u = steps[u] + h(u, t);
                 q.push(f_u, u);
             }
+
             if (d == 9) {
                 u = curr - 9 * k;
-
             } else {
                 u = curr + k;
             }

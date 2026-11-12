@@ -21,6 +21,7 @@ ll merge_sort(int l, int r, vector<ll> &a, vector<ll> &aux, ll d) {
     cnt += merge_sort(l, mid, a, aux, d);
     cnt += merge_sort(mid, r, a, aux, d);
 
+    // solução de fato
     int p = l;
     for (int j = mid; j < r; j++) {
         while (p < mid && a[p] <= a[j] + d) {

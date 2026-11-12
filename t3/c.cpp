@@ -88,7 +88,6 @@ int main() {
         int i, j;
         cin >> i >> j;
         out_degree[i]++;
-        adj[j].push_back(i);
     }
 
     auto t = topological_order(n);
